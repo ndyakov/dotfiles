@@ -40,9 +40,12 @@ Plug 'w0rp/ale'
 if has('nvim')
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
   Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript'}
   Plug 'mhartington/nvim-typescript'
+
   Plug 'zchee/deoplete-go', { 'do': 'make'}
+  let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
 
   let g:deoplete#enable_at_startup = 1
 
@@ -54,10 +57,8 @@ endif
 
 Plug 'jwalton512/vim-blade'
 Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'arnaud-lb/vim-php-namespace'
 
-"Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install', 'for': 'php' }
+Plug 'arnaud-lb/vim-php-namespace'
 
 Plug 'tpope/vim-markdown'
 Plug 'ekalinin/Dockerfile.vim'
@@ -509,11 +510,6 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
 
 " }}}
-
-" Calendar {{{
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-"}}}
 
 " fzf {{{
 let g:fzf_mru_relative = 1
