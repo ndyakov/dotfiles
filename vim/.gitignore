@@ -1,0 +1,6 @@
+backup/*
+!backup/.gitkeep
+plugged/*
+!plugged/.gitkeep
+.netrwhist
+logfile

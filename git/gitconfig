@@ -1,0 +1,31 @@
+[user]
+    name = Nedyalko Dyakov
+    email = me@ndyakov.eu
+[color]
+    ui = true
+[push]
+    default = simple
+[credential]
+    helper = cache
+[core]
+    editor = /usr/local/bin/nvim
+[pager]
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
+[branch]
+    autosetuprebase = always
+[merge]
+    tool = vimdiff
+[alias]
+    ci = commit -v
+    re = commit --amend --no-edit
+    co = checkout
+    br = branch
+    last = log -p -1 HEAD
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    top = log -1 --pretty=format:'%C(bold red)%d%Creset - %s - %Cgreen%h%Creset %C(bold blue)<%an>%Creset'
+    aa = add --all
+    fn = diff --name-status
+    lol = log --pretty=oneline --abbrev-commit --graph --decorate
+[commit]
+    verbose = true
