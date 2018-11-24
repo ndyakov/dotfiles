@@ -41,8 +41,8 @@ if has('nvim')
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-  Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript'}
-  Plug 'mhartington/nvim-typescript'
+  "Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript'}
+  "Plug 'mhartington/nvim-typescript'
 
   Plug 'zchee/deoplete-go', { 'do': 'make'}
   let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
