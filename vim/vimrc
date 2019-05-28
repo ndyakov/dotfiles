@@ -376,10 +376,13 @@ nnoremap ]t :tabnext<cr>
 " Quicklist navigation
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
+nnoremap ,q :cclose<CR>
+
 
 " Locallist navigation
 nnoremap [a :lprev<CR>
 nnoremap ]a :lnext<CR>
+nnoremap ,a :lclose<CR>
 
 " Better navigation in jumplist
 nnoremap [w <C-o>
@@ -551,6 +554,7 @@ autocmd FileType vue syntax sync fromstart
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
 
+
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -599,6 +603,14 @@ function! OpenCommitMessageDiff()
   wincmd p
 endfunction
 
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+vnoremap <leader>tf :GoTestFunc <CR>
+vnoremap <leader>t :GoTest <CR>
+nnoremap <leader>tf :GoTestFunc <CR>
+nnoremap <leader>t :GoTest <CR>
 
 " vim:fen:fdm=marker:fmr={{{,}}}:fdl=1:fdc=1:ts=2:sw=2:sts=2
 "
+"
+
