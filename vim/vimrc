@@ -15,8 +15,10 @@ Plug 'szw/vim-g'
 
 Plug 'tpope/vim-surround'
 Plug 'moll/vim-bbye'
+
 "Plug 'Townk/vim-autoclose'
 "Plug 'Raimondi/delimitMate'
+"
 Plug 'chrisbra/NrrwRgn'
 Plug 'majutsushi/tagbar'
 
@@ -44,9 +46,6 @@ if has('nvim')
   "Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript'}
   "Plug 'mhartington/nvim-typescript'
 
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
-  let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
-
   let g:deoplete#enable_at_startup = 1
 
 else
@@ -55,24 +54,23 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'jwalton512/vim-blade'
 Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-
-Plug 'arnaud-lb/vim-php-namespace'
-
+let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
 Plug 'tpope/vim-markdown'
+
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+Plug 'jwalton512/vim-blade', { 'for': 'php' }
 
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'posva/vim-vue'
 Plug 'elzr/vim-json'
-
 call plug#end()
 filetype plugin indent on
 
@@ -289,6 +287,9 @@ nmap <C-u> <ESC>:UndotreeToggle<CR>
 
 " Mapping to NERDTree
 nnoremap <C-n> :NERDTreeToggle %<cr>
+
+" I am not using U anyway, so let's make it Redo.
+nnoremap U :redo<CR>
 
 " git
 nnoremap ge :GitGutterSignsToggle<CR>
@@ -611,6 +612,3 @@ nnoremap <leader>tf :GoTestFunc <CR>
 nnoremap <leader>t :GoTest <CR>
 
 " vim:fen:fdm=marker:fmr={{{,}}}:fdl=1:fdc=1:ts=2:sw=2:sts=2
-"
-"
-
