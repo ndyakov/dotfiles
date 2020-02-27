@@ -1,16 +1,15 @@
 #!/bin/bash
 
 ensure () {
-    which $1 || brew install $1
+    if brew ls --versions $1 > /dev/null; then
+        # The package is installed
+        echo "$1 installed..."
+    else
+        brew install $1
+    fi
 }
 
-which g || curl -sSL https://git.io/g-install | bash -s -- fish
-which go || g install latest
-
 which brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-which n || curl -L https://git.io/n-install | bash
-which node || n latest
 
 ensure git
 ensure wget
@@ -33,3 +32,9 @@ ensure cmatrix
 ensure asciinema
 ensure coreutils
 ensure the_silver_searcher
+ensure gnupg
+ensure pinentry-mac
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+killall gpg-agent
+
+
