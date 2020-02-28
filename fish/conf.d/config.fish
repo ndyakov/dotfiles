@@ -9,6 +9,5 @@ set -gx GOPATH $HOME/go; set -gx GOROOT $HOME/.go; set -gx PATH $GOPATH/bin $PAT
 
 set -gx PATH /Users/ndyakov/Library/Python/3.7/bin $PATH
 
-
 set -gx N_PREFIX $HOME/n
 set -gx PATH $N_PREFIX/bin $PATH
