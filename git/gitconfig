@@ -1,6 +1,7 @@
 [user]
     name = Nedyalko Dyakov
     email = nedyalko.dyakov@gmail.com
+	signingkey = A5EFAEFD563623B9
 [color]
     ui = true
 [push]
@@ -29,3 +30,4 @@
     lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [commit]
     verbose = true
+	gpgsign = true

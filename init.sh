@@ -26,20 +26,11 @@ if [ ! -d "$HOME/.tmux" ]; then
     ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 fi
 
-if [ ! -d "$HOME/.config/nvim" ]; then
-    ln -s $dotfiles/nvim/ $HOME/.config/nvim
-fi
-
 echo "$dotfiles/fish" > $HOME/.config/fish/fishfile
 
-gem install neovim
+./nvim.sh
 
-npm install -g neovim
-
-python3 -m pip install --user --upgrade pynvim
-
-gem install neovim
-
+./secrets.sh
 
 echo "1.now run fisher in fish"
 echo "2.run tmux and install plugins"
