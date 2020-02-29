@@ -54,6 +54,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
 let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
 Plug 'tpope/vim-markdown'
