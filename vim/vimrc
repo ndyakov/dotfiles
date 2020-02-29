@@ -201,6 +201,7 @@ let hlstate=0
 nnoremap <Leader>n :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>
 inoremap <Leader>n <ESC>:if (hlstate%2 == 0) \|  nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>a}}}
 
+
 " no and arrows {{{1
 
 " Get Rid of stupid Goddamned help keys
@@ -373,17 +374,47 @@ nnoremap [t :tabprevious<cr>
 nnoremap ]t :tabnext<cr>
 ""}}}
 
+
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+
+
 " ========== Quickfix / Locallist / f<char> navigation{{{
 " Quicklist navigation
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
-nnoremap ,q :cclose<CR>
+nnoremap ,q :call ToggleList("Quickfix List", "c")<CR>
 
 
 " Locallist navigation
 nnoremap [a :lprev<CR>
 nnoremap ]a :lnext<CR>
-nnoremap ,a :lclose<CR>
+nnoremap ,a :call ToggleList("Location List", "l")<CR>
 
 " Better navigation in jumplist
 nnoremap [w <C-o>
