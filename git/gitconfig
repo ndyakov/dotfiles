@@ -1,7 +1,11 @@
 [user]
     name = Nedyalko Dyakov
     email = nedyalko.dyakov@gmail.com
-	signingkey = A5EFAEFD563623B9
+    signingkey = A5EFAEFD563623B9
+[user]
+    name = Nedyalko Dyakov
+    email = ndyakov@coursera.org
+    signingkey = 24C1B04828519970
 [color]
     ui = true
 [push]
@@ -30,4 +34,6 @@
     lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [commit]
     verbose = true
-	gpgsign = true
+    gpgsign = true
+[gpg]
+    program = gpg
