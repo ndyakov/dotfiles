@@ -1,5 +1,5 @@
-# git
-alias git='env LANG=en_US git'
+# g
+alias g='env LANG=en_US git'
 
 # shorty
 alias l='ls -la'

@@ -1,4 +1,5 @@
-# Completions
+# Completions for aliasese 
+# make_completion g git
 function make_completion --argument-names alias command
     echo "
     function __alias_completion_$alias

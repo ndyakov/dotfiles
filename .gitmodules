@@ -1,3 +1,6 @@
 [submodule "tpm"]
     path = tmux/plugins/tpm
     url = https://github.com/tmux-plugins/tpm
+[submodule "secrets"]
+	path = secrets
+	url = https://github.com/ndyakov/secrets.git
