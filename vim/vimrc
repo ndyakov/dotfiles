@@ -4,7 +4,7 @@ set encoding=utf-8
 let mapleader = ","
 
 function! PlugInstalled(name)
-    return has_key(g:plugs, a:name)
+    return has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
 endfunction
 
 
@@ -59,7 +59,7 @@ Plug 'w0rp/ale'
 
 if has('nvim')
   " language server client
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-marketplace'}
 
   " typescript syntax
   Plug 'HerringtonDarkholme/yats.vim', { 'for': 'ts' }
