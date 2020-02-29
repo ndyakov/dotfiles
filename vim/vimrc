@@ -3,32 +3,44 @@ scriptencoding utf-8
 set encoding=utf-8
 let mapleader = ","
 
+function! PlugInstalled(name)
+    return has_key(g:plugs, a:name)
+endfunction
+
+
 " ========== Plugins {{{1
 
 call plug#begin('~/.vim/plugged')
 
+"theme
 Plug 'jonathanfilip/vim-lucius'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'wincent/terminus'
-Plug 'google/vim-searchindex'
-Plug 'szw/vim-g'
 
-Plug 'tpope/vim-surround'
+"focus gained and lost on tmux change window/pane
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" better integration with tmux and iterm
+Plug 'wincent/terminus'
+
+" shows how many times a search is present
+Plug 'google/vim-searchindex'
+
+"delete buffers and close them
 Plug 'moll/vim-bbye'
 
 "Plug 'Townk/vim-autoclose'
 "Plug 'Raimondi/delimitMate'
 "
 Plug 'chrisbra/NrrwRgn'
-Plug 'majutsushi/tagbar'
 
+Plug 'majutsushi/tagbar'
+Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdtree'
+
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'ryanoasis/vim-devicons'
 
-Plug 'mbbill/undotree'
 Plug 'roman/golden-ratio'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -38,15 +50,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'airblade/vim-rooter'
 
+Plug 'fatih/vim-go', { 'for': 'go' }
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_def_mapping_enabled = 0
+
 Plug 'w0rp/ale'
+
 if has('nvim')
-  Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " language server client
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  "Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript'}
-  "Plug 'mhartington/nvim-typescript'
-
-  let g:deoplete#enable_at_startup = 1
+  " typescript syntax
+  Plug 'HerringtonDarkholme/yats.vim', { 'for': 'ts' }
 
 else
   Plug 'Shougo/deoplete.nvim'
@@ -54,24 +70,20 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
+" Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
+" let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
+
+" markdown syntax highlight
 Plug 'tpope/vim-markdown'
 
-Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'fatih/vim-go', { 'for': 'go' }
+"dockerfile syntax highlight
+Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'jwalton512/vim-blade', { 'for': 'php' }
 
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'posva/vim-vue'
-Plug 'elzr/vim-json'
 call plug#end()
 filetype plugin indent on
 
@@ -247,7 +259,7 @@ func! ShowTrailingWS()"{{{
   match Error /\s\+$/
 endfunc"}}}
 
-" =========== Vim Keybindings ==================
+" =========== Vim Key bindings ==================
 
 " bindings{{{
 ",w Command to show white space from a file.
@@ -259,7 +271,7 @@ nnoremap <leader>W :call ClearTrailingWS()<CR>
 " Toggle spell
 nnoremap <silent> <leader>s :set spell!<CR>
 
-" Make tab in v mode ident code
+" Make tab in v mode indent code
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
@@ -279,10 +291,6 @@ nnoremap <leader>v V`]
 " Search the word under the cursor with Ag/fzf
 nnoremap <leader>f mM:Ag! <C-R><C-W><CR>
 vnoremap <leader>f mM"hy:Ag! <C-R>h<CR>
-
-" Search the word under the cursor with Google
-nnoremap <leader>go mM:Gf "<C-R><C-W>"<CR>
-vnoremap <leader>go mM"hy:Gf <C-R>h<CR>
 
 " Mapping to Undotree
 nmap <C-u> <ESC>:UndotreeToggle<CR>
@@ -467,7 +475,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e ~/.vimrc<cr>
 
 " misc {{{
 let g:vim_g_f_command = "Gf"
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 " }}}
 
 " NerdTree params {{{1
@@ -597,7 +605,7 @@ endfunction
 autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 
-let g:rooter_patterns = ['composer.json', '.git/']
+let g:rooter_patterns = ['composer.json', 'go.mod', '.git/']
 
 " Put this in your .vimrc and whenever you `git commit` you'll see the diff of your commit next to your commit message.
 " For the most accurate diffs, use `git config --global commit.verbose true`
@@ -645,3 +653,103 @@ nnoremap <leader>tf :GoTestFunc <CR>
 nnoremap <leader>t :GoTest <CR>
 
 " vim:fen:fdm=marker:fmr={{{,}}}:fdl=1:fdc=1:ts=2:sw=2:sts=2
+"
+
+
+if PlugInstalled('coc.nvim')
+    " " Use tab for trigger completion with characters ahead and navigate.
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr> <c-space> coc#refresh()
+
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " position. Coc only does snippet and additional edit on confirm.
+    if has('patch8.1.1068')
+      " Use `complete_info` if your (Neo)Vim version supports it.
+      inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    else
+      imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    endif
+
+    " Use `[g` and `]g` to navigate diagnostics
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+    " GoTo code navigation.
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " Use K to show documentation in preview window.
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocActionAsync('doHover')
+      endif
+    endfunction
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    augroup mygroup
+      autocmd!
+      " Setup formatexpr specified filetype(s).
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+      " Update signature help on jump placeholder.
+      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
+
+    " Add `:Format` command to format current buffer.
+    command! -nargs=0 Format :call CocAction('format')
+
+    " Add `:Fold` command to fold current buffer.
+    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+    " Add `:OR` command for organize imports of the current buffer.
+    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+    " Add (Neo)Vim's native statusline support.
+    " NOTE: Please see `:h coc-status` for integrations with external plugins that
+    " provide custom statusline: lightline.vim, vim-airline.
+    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+    " Mappings using CoCList:
+    " Show all diagnostics.
+    nnoremap <silent> <space>a  :<C-u>CocList -A diagnostics<cr>
+    " Manage extensions.
+    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+    " Show commands.
+    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+
+    " Find symbol of current document.
+    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+
+    " Search workspace tags
+    nnoremap <silent> `  :<C-u>CocList -A tags<cr>
+
+    " Search buffers
+    nnoremap <silent> <space>q  :<C-u>CocList --normal buffers<cr>
+
+    " Do default action for next item.
+    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+    " Do default action for previous item.
+    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+    " Resume latest coc list.
+    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+endif
