@@ -8,6 +8,7 @@ function! PlugInstalled(name)
 endfunction
 
 
+
 " ========== Plugins {{{1
 
 call plug#begin('~/.vim/plugged')
@@ -59,7 +60,7 @@ Plug 'w0rp/ale'
 
 if has('nvim')
   " language server client
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-marketplace'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-marketplace coc-lists coc-go'}
 
   " typescript syntax
   Plug 'HerringtonDarkholme/yats.vim', { 'for': 'ts' }
@@ -753,3 +754,12 @@ if PlugInstalled('coc.nvim')
     " Resume latest coc list.
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
+
+
+set so=15
+set colorcolumn=100
+
+set completeopt=longest,menuone
+
+nnoremap k <Nop>
+nnoremap j <Nop>
