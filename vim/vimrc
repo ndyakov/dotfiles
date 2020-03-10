@@ -761,5 +761,3 @@ set colorcolumn=100
 
 set completeopt=longest,menuone
 
-nnoremap k <Nop>
-nnoremap j <Nop>
