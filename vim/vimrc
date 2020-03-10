@@ -55,7 +55,7 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_def_mapping_enabled = 0
 
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 if has('nvim')
   " language server client
@@ -101,7 +101,7 @@ highlight Comment ctermfg=249 guifg=#b2b2b2
 " ========== Vim Basic Settings
 "
 syntax on
-set updatetime=1000
+set updatetime=300
 " Set backup dir for swp files 
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
@@ -296,7 +296,7 @@ vnoremap <leader>f mM"hy:Ag! <C-R>h<CR>
 nmap <C-u> <ESC>:UndotreeToggle<CR>
 
 " Mapping to NERDTree
-nnoremap <C-n> :NERDTreeToggle %<cr>
+nnoremap <BS> :NERDTreeToggle %<cr>
 
 " I am not using U anyway, so let's make it Redo.
 nnoremap U :redo<CR>
@@ -312,16 +312,11 @@ nnoremap gc :Gcommit<CR>
 nnoremap [g :GitGutterPrevHunk<CR>
 nnoremap ]g :GitGutterNextHunk<CR>
 
-" ale
-nnoremap <silent> <BS> <Plug>(ale_previous_wrap)
-nnoremap <silent> <Space> <Plug>(ale_next_wrap)
-
 " fzf
 nnoremap <tab> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <Space> :BTags<CR>
 nnoremap <s-Tab> :FZFMru<CR>
-nnoremap <leader><tab> <plug>(fzf-maps-n)
+nnoremap <C-b> :Buffers<CR>
+nnoremap ` :Tags<CR>
 nnoremap \ :TagbarToggle<CR>
 
 " Ctrl+S to save
@@ -424,6 +419,7 @@ nnoremap ,q :call ToggleList("Quickfix List", "c")<CR>
 nnoremap [a :lprev<CR>
 nnoremap ]a :lnext<CR>
 nnoremap ,a :call ToggleList("Location List", "l")<CR>
+nnoremap ,aa :lfirst <CR>
 
 " Better navigation in jumplist
 nnoremap [w <C-o>
@@ -740,9 +736,6 @@ if PlugInstalled('coc.nvim')
     " Find symbol of current document.
     nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
-    " Search workspace tags
-    nnoremap <silent> `  :<C-u>CocList -A tags<cr>
-
     " Search buffers
     nnoremap <silent> <space>q  :<C-u>CocList --normal buffers<cr>
 
@@ -753,3 +746,5 @@ if PlugInstalled('coc.nvim')
     " Resume latest coc list.
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
+
+let g:go_fmt_command = "goimports"
