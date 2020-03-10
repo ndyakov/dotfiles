@@ -4,8 +4,9 @@ set encoding=utf-8
 let mapleader = ","
 
 function! PlugInstalled(name)
-    return has_key(g:plugs, a:name)
+    return has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
 endfunction
+
 
 
 " ========== Plugins {{{1
@@ -59,7 +60,7 @@ let g:go_def_mapping_enabled = 0
 
 if has('nvim')
   " language server client
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-marketplace coc-lists coc-go'}
 
   " typescript syntax
   Plug 'HerringtonDarkholme/yats.vim', { 'for': 'ts' }
@@ -748,3 +749,8 @@ if PlugInstalled('coc.nvim')
 endif
 
 let g:go_fmt_command = "goimports"
+
+set so=15
+set colorcolumn=100
+
+set completeopt=longest,menuone
