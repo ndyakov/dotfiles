@@ -1,11 +1,7 @@
 [user]
     name = Nedyalko Dyakov
     email = nedyalko.dyakov@gmail.com
-    signingkey = A5EFAEFD563623B9
-[user-work]
-    name = Nedyalko Dyakov
-    email = ndyakov@coursera.org
-    signingkey = 24C1B04828519970
+    signingkey = 5571106A08EA25A3
 [color]
     ui = true
 [push]
@@ -34,6 +30,9 @@
     lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [commit]
     verbose = true
-    gpgsign = true
+	gpgsign = true
 [gpg]
-    program = gpg
+	program = gpg
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
