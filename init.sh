@@ -26,7 +26,9 @@ if [ ! -d "$HOME/.tmux" ]; then
     ln -s $HOME/.tmux/tmux.conf $HOME/.tmux.conf
 fi
 
-echo "$dotfiles/fish" > $HOME/.config/fish/fishfile
+cp "$dotfiles/fish/fish_plugins"  $HOME/.config/fish/fish_plugins
+cp "$dotfiles/fish/fish_variables"  $HOME/.config/fish/fish_variables
+echo "$dotfiles/fish/ndyakov" >> $HOME/.config/fish/fish_plugins
 
 ./nvim.sh
 
