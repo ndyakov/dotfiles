@@ -21,6 +21,7 @@ ensure direnv
 ensure fzf
 ensure php
 ensure tmux
+ensure tmp
 ensure watch
 ensure nmap
 ensure reattach-to-user-namespace

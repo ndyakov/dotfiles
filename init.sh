@@ -9,9 +9,9 @@ git submodule update
 
 ln -s $dotfiles/git/gitconfig $HOME/.gitconfig
 
-echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
 
-chsh -s /usr/local/bin/fish
+chsh -s /opt/homebrew/bin/fish
 
 # download fisher
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish

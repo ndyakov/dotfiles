@@ -1,5 +1,4 @@
 # vi bindings
-set -u fish_plugins autojump vi-mode
 set -u vi_mode_default vi_mode_normal
 set -u fish_key_bindings fish_vi_key_bindings
 
