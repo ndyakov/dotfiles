@@ -4,3 +4,6 @@
 [submodule "secrets"]
 	path = secrets
 	url = https://github.com/ndyakov/secrets.git
+[submodule "iterm/everforest"]
+	path = iterm/everforest
+	url = git@github.com:icewind/everforest.iterm2.git

@@ -1,108 +1,47 @@
-filetype off
-scriptencoding utf-8
-set encoding=utf-8
-let mapleader = ","
-
-function! PlugInstalled(name)
-    return has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
-endfunction
-
-
+colorscheme everforest
 
 " ========== Plugins {{{1
 
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged')
 
 "theme
-Plug 'jonathanfilip/vim-lucius'
+"Plug 'jonathanfilip/vim-lucius'
 
 "focus gained and lost on tmux change window/pane
-Plug 'tmux-plugins/vim-tmux-focus-events'
+"Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " better integration with tmux and iterm
-Plug 'wincent/terminus'
+"Plug 'wincent/terminus'
 
 " shows how many times a search is present
-Plug 'google/vim-searchindex'
+"Plug 'google/vim-searchindex'
 
 "delete buffers and close them
-Plug 'moll/vim-bbye'
+"Plug 'moll/vim-bbye'
 
-"Plug 'Townk/vim-autoclose'
-"Plug 'Raimondi/delimitMate'
-"
-Plug 'chrisbra/NrrwRgn'
+"Plug 'majutsushi/tagbar'
+"Plug 'mbbill/undotree'
+"Plug 'scrooloose/nerdtree'
 
-Plug 'majutsushi/tagbar'
-Plug 'mbbill/undotree'
-Plug 'scrooloose/nerdtree'
+"Plug 'roman/golden-ratio'
 
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
+"Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf.vim'
+"Plug 'pbogut/fzf-mru.vim'
 
-Plug 'roman/golden-ratio'
-"Plug 'ervandew/supertab'
-
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'pbogut/fzf-mru.vim'
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'airblade/vim-rooter'
-
-Plug 'fatih/vim-go', { 'for': 'go' }
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_def_mapping_enabled = 0
-
-"Plug 'w0rp/ale'
-
-if has('nvim')
-  " language server client
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-marketplace coc-lists coc-go'}
-
-  " typescript syntax
-  Plug 'HerringtonDarkholme/yats.vim', { 'for': 'ts' }
-
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-" let g:deoplete#sources#go#sort_class = ['var', 'func', 'type', 'package', 'const']
+"Plug 'fatih/vim-go', { 'for': 'go' }
 
 " markdown syntax highlight
-Plug 'tpope/vim-markdown'
-
-
+"Plug 'tpope/vim-markdown'
 "dockerfile syntax highlight
-Plug 'ekalinin/Dockerfile.vim'
-
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-Plug 'jwalton512/vim-blade', { 'for': 'php' }
-
-call plug#end()
+"Plug 'ekalinin/Dockerfile.vim'
+"
 filetype plugin indent on
 
 " }}}
-
-" ========== Color theme settings {{{1
-
-colorscheme lucius
-LuciusDark
-highlight Comment ctermfg=249 guifg=#b2b2b2
-"highlight Normal ctermbg=NONE
-
-"}}}
-
 " ========== Vim Basic Settings
 "
 syntax on
-set updatetime=300
 " Set backup dir for swp files 
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
@@ -120,17 +59,12 @@ set autoread
 " don't show the mode
 set noshowmode
 " show current keypresses
-set showcmd
 " completion in command mode
-set wildmenu
-set wildmode=list:longest
 
 " make vim faster
-set ttyfast
 set nocursorcolumn
 set scrolloff=5
 set scrolljump=5
-set lazyredraw
 " don't syntax uber long lines
 set synmaxcol=320
 set number
@@ -145,7 +79,6 @@ set expandtab
 
 " how backspace works
 set backspace=indent,eol,start
-set noshelltemp
 
 " Statusline {{{
 if has("statusline")
@@ -160,7 +93,6 @@ if has("statusline")
 
   set statusline+=\ %-8.(%l,%c%V%)
   set statusline+=\ %P\ %L\ 
-  "set statusline+=\|\ \ %{WebDevIconsGetFileFormatSymbol()}\ 
 endif
 
 " Change status color on different modes
@@ -169,11 +101,13 @@ set laststatus=2
 
 augroup StatusLineGroup
     au!
-    au InsertEnter * hi StatusLine term=reverse ctermfg=7 ctermbg=65 guibg=#005f5f guifg=White gui=underline
-    au InsertLeave * hi StatusLine term=reverse ctermfg=7 ctermbg=24 gui=bold,reverse
+    au InsertEnter * hi StatusLine guibg=#d0d6dd guifg=#425262 gui=bold
+    au InsertLeave * hi StatusLine gui=bold,reverse
 augroup END
 
+
 "}}}
+"
 
 " shortmess{{{
 set shortmess+=A
@@ -296,8 +230,8 @@ vnoremap <leader>f mM"hy:Ag! <C-R>h<CR>
 " Mapping to Undotree
 nmap <C-u> <ESC>:UndotreeToggle<CR>
 
-" Mapping to NERDTree
-nnoremap <BS> :NERDTreeToggle %<cr>
+" Mapping to NvimTree
+nnoremap <BS> :NvimTreeToggle %<cr>
 
 " I am not using U anyway, so let's make it Redo.
 nnoremap U :redo<CR>
@@ -432,32 +366,6 @@ nnoremap ]f ;
 
 "}}}
 
-" ========== Gvim Settings {{{
-
-" Removing scrollbars
-if has("gui_running")
-    if has('win32')
-        set guifont=Consolas:h12   " Win32.
-    elseif has('gui_macvim')
-        set guifont=LiterationMonoPowerline\ Nerd\ Font:h14     " OSX.
-    else
-        set guifont=Liberation\ Mono\ 12 " linux
-    endif
-    set cursorline
-    set guitablabel=%-0.12t%M
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=a
-    set guioptions-=i
-    set guioptions-=m
-    set guioptions-=M
-else
-    set t_Co=256
-endif
-
-" }}}
-
 " vimrc edit and source {{{1
 
 " Source the vimrc file after saving it
@@ -475,21 +383,12 @@ let g:vim_g_f_command = "Gf"
 "let g:deoplete#enable_at_startup = 1
 " }}}
 
-" NerdTree params {{{1
-
-let NERDTreeIgnore=['.sw?','\~$', '\.pyc$']
-let NERDTreeHijackNetrw=1
-
-"}}}
-"
 "  GitGutter Params {{{1
-
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '–'
 let g:gitgutter_sign_modified_removed = '_'
-
 " }}}
 
 " GolderRatio {{{
@@ -497,61 +396,11 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 let g:golden_ratio_autocommand = 0
 " }}}
 
-
-
 " Go stuff
 nnoremap <leader>gd :GoDef <CR>
 
-
-"nerd tree find
-nnoremap <leader>nf :NERDTreeFind <CR>
-
-function! PhpSyntaxOverride()
-  " Put snippet overrides in this function.
-  hi! link phpDocTags phpDefine
-  hi! link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
-
-
-" ale fixers {{{
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'importjs', 'prettier_eslint'],
-\   'php': ['phpcbf'],
-\   'go' : ['goimports', 'gofmt'],
-\}
-
-let g:ale_linters = {
-\   'go' : ['revive', 'vet'],
-\}
-
-let g:ale_pattern_options = {
-\ '\.vue$': {'ale_linters': ['eslint'], 'ale_fixers': ['eslint']},
-\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-\}
-" }}}
-
-" ale sings and params {{{1
-
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 'never'
-let g:ale_open_list = 1
-
-" }}}
+"nvim tree find
+nnoremap <leader>nf :NvimTreeFindFileToggle <CR>
 
 " fzf {{{
 let g:fzf_mru_relative = 1
@@ -652,105 +501,8 @@ nnoremap <leader>t :GoTest <CR>
 " vim:fen:fdm=marker:fmr={{{,}}}:fdl=1:fdc=1:ts=2:sw=2:sts=2
 "
 
-
-if PlugInstalled('coc.nvim')
-    " " Use tab for trigger completion with characters ahead and navigate.
-    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-    " other plugin before putting this into your config.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
-
-    " Use <c-space> to trigger completion.
-    inoremap <silent><expr> <c-space> coc#refresh()
-
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-    " position. Coc only does snippet and additional edit on confirm.
-    if has('patch8.1.1068')
-      " Use `complete_info` if your (Neo)Vim version supports it.
-      inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-    else
-      imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    endif
-
-    " Use `[g` and `]g` to navigate diagnostics
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-    " GoTo code navigation.
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-
-    " Use K to show documentation in preview window.
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      else
-        call CocActionAsync('doHover')
-      endif
-    endfunction
-
-    " Highlight the symbol and its references when holding the cursor.
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-
-    augroup mygroup
-      autocmd!
-      " Setup formatexpr specified filetype(s).
-      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-      " Update signature help on jump placeholder.
-      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    augroup end
-
-    " Add `:Format` command to format current buffer.
-    command! -nargs=0 Format :call CocAction('format')
-
-    " Add `:Fold` command to fold current buffer.
-    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-    " Add `:OR` command for organize imports of the current buffer.
-    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-    " Add (Neo)Vim's native statusline support.
-    " NOTE: Please see `:h coc-status` for integrations with external plugins that
-    " provide custom statusline: lightline.vim, vim-airline.
-    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-    " Mappings using CoCList:
-    " Show all diagnostics.
-    nnoremap <silent> <space>a  :<C-u>CocList -A diagnostics<cr>
-    " Manage extensions.
-    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    " Show commands.
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-
-    " Find symbol of current document.
-    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-
-    " Search buffers
-    nnoremap <silent> <space>q  :<C-u>CocList --normal buffers<cr>
-
-    " Do default action for next item.
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    " Do default action for previous item.
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    " Resume latest coc list.
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-endif
-
 let g:go_fmt_command = "goimports"
 
 set so=15
 set colorcolumn=100
-
 set completeopt=longest,menuone
