@@ -1,1 +1,51 @@
+# Secrets and sensitive files
+secrets/.ssh
+secrets/ssh/
+secrets/private_keys.backup
+secrets/.pk
+.drunk
+
+# Vim
+vim/plugged/
+vim/backup/
+vim/.netrwhist
+*.swp
+*.swo
+*~
+
+# Fish
+fish/fish_variables
+fish/fishd.*
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Backup directory
+.dotfiles_backup/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Docker
+.dockerignore
+.idea
