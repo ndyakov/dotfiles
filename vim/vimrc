@@ -101,12 +101,14 @@ set laststatus=2
 
 augroup StatusLineGroup
     au!
-    au InsertEnter * hi StatusLine guibg=#d0d6dd guifg=#425262 gui=bold
-    au InsertLeave * hi StatusLine gui=bold,reverse
+    au InsertEnter * hi StatusLine guibg=#83c092 guifg=#323b3f gui=bold
+
+    au InsertLeave * hi StatusLine gui=reverse
+
 augroup END
 
-
 "}}}
+"
 "
 
 " shortmess{{{
@@ -123,15 +125,8 @@ set listchars=nbsp:⦸,tab:▸\ ,eol:¬,trail:·,precedes:«,extends:»
 "}}}
 
 " timeout and fast escape{{{
-set timeoutlen=420 ttimeoutlen=10
+set timeoutlen=1000 ttimeoutlen=100
 autocmd CursorMoved * set timeoutlen=420 ttimeoutlen=10
-if ! has("gui_running")
-    augroup FastEscape
-        au!
-        au InsertEnter * set timeoutlen=0 ttimeoutlen=0
-        au InsertLeave * set timeoutlen=420 ttimeoutlen=10
-    augroup END
-endif
 "}}}
 
 " Search{{{
