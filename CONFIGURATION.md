@@ -11,16 +11,25 @@ All configuration variables are stored in `template-config.json` at the root of 
 ~/personal/dotfiles/template-config.json
 ```
 
+### ⚠️ Important: Privacy
+**`template-config.json` is in `.gitignore` and should NEVER be committed to the repository** as it contains:
+- Your email address
+- Your GPG signing key
+- Your home directory path
+- Other personal information
+
+Instead, use `template-config.json.example` as a template to create your own `template-config.json`.
+
 ## Configuration Variables
 
 ### User Information
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `HOME_DIR` | Your home directory path | `/Users/ndyakov` |
-| `USERNAME` | Your username | `ndyakov` |
-| `USER_NAME` | Your full name | `Nedyalko Dyakov` |
-| `USER_EMAIL` | Your email address | `nedyalko.dyakov@gmail.com` |
-| `SIGN_KEY` | GPG signing key | `5571106A08EA25A3` |
+| `HOME_DIR` | Your home directory path | `/Users/yourusername` |
+| `USERNAME` | Your username | `yourusername` |
+| `USER_NAME` | Your full name | `Your Full Name` |
+| `USER_EMAIL` | Your email address | `your.email@example.com` |
+| `SIGN_KEY` | GPG signing key | `YOUR_GPG_KEY_HERE` |
 | `FONT` | Default font name | `JetBrains Mono` |
 
 ### Everforest Dark Color Palette
@@ -112,6 +121,25 @@ Template files use the `.template` extension and contain placeholders in the for
 3. **Neovim Configuration**
    - `nvim/lua/config/autocmds.lua.template`
    - Contains: Custom colorscheme overrides
+
+## Initial Setup
+
+### 1. Create Your Configuration File
+Copy the example file and customize it with your personal information:
+
+```bash
+cp template-config.json.example template-config.json
+nvim template-config.json
+```
+
+**Important:** Update these values with your own:
+- `HOME_DIR` - Your home directory (e.g., `/Users/yourusername`)
+- `USERNAME` - Your username
+- `USER_EMAIL` - Your email address
+- `USER_NAME` - Your full name
+- `SIGN_KEY` - Your GPG signing key (if you use one)
+
+The color values are already set to Everforest Dark and usually don't need to be changed.
 
 ## How to Use
 

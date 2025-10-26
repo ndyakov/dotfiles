@@ -1,16 +1,63 @@
 {
   "variables": {
-    "HOME_DIR": "/Users/username",
+    "_comment_user": "User information (KEEP THIS FILE PRIVATE - DO NOT COMMIT)",
+    "HOME_DIR": "/Users/yourusername",
+    "USERNAME": "yourusername",
+    "USER_EMAIL": "your.email@example.com",
+    "USER_NAME": "Your Full Name",
+    "SIGN_KEY": "YOUR_GPG_KEY_HERE",
+
+    "_comment_fonts": "Font configuration",
     "FONT": "JetBrains Mono",
-    "COLOR_PRIMARY": "#a7c080",
-    "COLOR_SECONDARY": "#dbbc7f",
-    "COLOR_YELLOW": "#dbbc7f",
-    "COLOR_CYAN": "#83c092",
-    "COLOR_BLUE": "#7fbbb3",
+    "FONT_SIZE": "18",
+
+    "_comment_palette": "Everforest Dark Color Palette - https://github.com/sainnhe/everforest",
+    "_comment_foreground": "Foreground colors",
+    "COLOR_FG": "#d3c6aa",
     "COLOR_WHITE": "#f2efdf",
-    "COLOR_GREEN": "#a7c080",
+
+    "_comment_background": "Background colors (darkest to lightest)",
+    "COLOR_BG_INACTIVE": "#1e2326",
+    "COLOR_BG_DIM": "#1e2326",
+    "COLOR_BG": "#232a2e",
+    "COLOR_BG0": "#272e33",
+    "COLOR_BG1": "#2e383c",
+    "COLOR_BG2": "#374145",
+    "COLOR_BG3": "#414b50",
+    "COLOR_BG4": "#495156",
+    "COLOR_BG_VISUAL": "#4c3743",
+
+    "_comment_accent": "Accent colors",
     "COLOR_RED": "#e67e80",
-    "SIGN_KEY": ""
+    "COLOR_ORANGE": "#e69875",
+    "COLOR_YELLOW": "#dbbc7f",
+    "COLOR_GREEN": "#a7c080",
+    "COLOR_AQUA": "#83c092",
+    "COLOR_BLUE": "#7fbbb3",
+    "COLOR_PURPLE": "#d699b6",
+
+    "_comment_grey": "Grey shades",
+    "COLOR_GREY0": "#7a8478",
+    "COLOR_GREY1": "#859289",
+    "COLOR_GREY2": "#9da9a0",
+
+    "_comment_statusline": "Statusline colors",
+    "COLOR_STATUSLINE1": "#a7c080",
+    "COLOR_STATUSLINE2": "#d3c6aa",
+    "COLOR_STATUSLINE3": "#e67e80",
+
+    "_comment_sip": "Sip.fish prompt colors - https://github.com/ndyakov/sip.fish",
+    "SIP_COLOR_YELLOW": "#dbbc7f",
+    "SIP_COLOR_CYAN": "#83c092",
+    "SIP_COLOR_BLUE": "#7fbbb3",
+    "SIP_COLOR_GREEN": "#a7c080",
+    "SIP_COLOR_RED": "#e67e80",
+    "SIP_COLOR_WHITE": "#d3c6aa",
+    "SIP_COLOR_VI_INSERT_SUCCESS": "#a7c080",
+    "SIP_COLOR_VI_INSERT_ERROR": "#e67e80",
+    "SIP_COLOR_VI_NORMAL": "#7fbbb3",
+    "SIP_COLOR_VI_VISUAL": "#e67e80",
+    "SIP_PROMPT_STYLE": "default"
   }
 }
 
