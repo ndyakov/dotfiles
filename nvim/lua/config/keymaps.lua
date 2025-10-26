@@ -42,9 +42,10 @@ map("n", "<leader>l", ":set relativenumber!<CR>", opts)
 map("n", "<leader>v", "V`]", opts)
 
 -- NvimTree and FZF
-map("n", "<tab>", ":NvimTreeToggle<CR>", opts) -- Tab opens NvimTree
+map("n", "<tab>", ":Buffers<CR>", opts) -- Tab opens Buffers
 map("n", "<BS>", ":FZF<CR>", opts) -- Backspace opens FZF
 map("n", "<leader>nf", ":NvimTreeFindFileToggle<CR>", opts)
+map("n", "<leader>nt", ":NvimTreeToggle<CR>", opts) -- Leader+nt for NvimTree
 
 -- Redo with U
 map("n", "U", ":redo<CR>", opts)

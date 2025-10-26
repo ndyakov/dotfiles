@@ -6,12 +6,13 @@ Leader key: `,` (comma)
 
 | Key | Action |
 |-----|--------|
-| `<Tab>` | Toggle NvimTree (file explorer) |
+| `<Tab>` | Open Buffers (FZF buffer list) |
 | `<BS>` (Backspace) | Open FZF (fuzzy file finder) |
 | `<Shift-F>` | Open Ag (Silver Searcher - search in files) |
 | `<C-b>` | List buffers (FZF) |
 | `<F20>` | Open Ag (search in files) |
 | `<leader>f` | Search word under cursor with Ag |
+| `<leader>nt` | Toggle NvimTree (file explorer) |
 | `<leader>nf` | Find current file in NvimTree |
 
 ## Editing
