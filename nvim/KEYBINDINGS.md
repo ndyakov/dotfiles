@@ -109,6 +109,39 @@ Leader key: `,` (comma)
 | `gb` | Blame line |
 | `gd` | Diff this |
 
+## LSP (Language Server Protocol)
+
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gi` | Go to implementation |
+| `gt` | Go to type definition |
+| `gr` | Find references |
+| `K` | Hover documentation |
+| `<C-k>` | Signature help (normal & insert mode) |
+| `<leader>rn` | Rename symbol |
+| `<leader>ca` | Code action |
+| `<leader>fm` | Format buffer |
+| `[d` | Previous diagnostic |
+| `]d` | Next diagnostic |
+| `<leader>e` | Show diagnostic float |
+| `<leader>dl` | Diagnostic location list |
+
+## Completion (nvim-cmp)
+
+| Key | Action |
+|-----|--------|
+| `<C-n>` | Next completion item |
+| `<C-p>` | Previous completion item |
+| `<C-d>` | Scroll docs down |
+| `<C-f>` | Scroll docs up |
+| `<C-Space>` | Trigger completion |
+| `<C-e>` | Close completion |
+| `<CR>` | Confirm selection |
+| `<Tab>` | Next item or expand snippet |
+| `<S-Tab>` | Previous item or jump back in snippet |
+
 ## Go Development
 
 | Key | Action |

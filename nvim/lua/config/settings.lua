@@ -83,7 +83,10 @@ opt.virtualedit = "block"
 opt.autoread = true
 opt.whichwrap:append("<,>,h,l")
 opt.colorcolumn = "100"
-opt.completeopt = { "longest", "menuone" }
+
+-- Completion options (for nvim-cmp)
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.pumheight = 10 -- Max items in completion menu
 
 -- Filetype
 vim.cmd("filetype plugin indent on")
