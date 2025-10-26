@@ -121,6 +121,7 @@ map("n", "<leader>ev", "<C-w><C-v><C-l>:e ~/.config/nvim/init.vim<CR>", opts)
 
 -- Telescope (replacing fzf)
 map("n", "<tab>", ":Telescope find_files<CR>", opts)
+map("n", "<S-Tab>", ":Telescope find_files<CR>", opts) -- Shift+Tab also opens file finder
 map("n", "<C-b>", ":Telescope buffers<CR>", opts)
 map("n", "<F20>", ":Telescope live_grep<CR>", opts)
 map("n", "<leader>f", function()

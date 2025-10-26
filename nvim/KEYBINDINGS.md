@@ -7,6 +7,7 @@ Leader key: `,` (comma)
 | Key | Action |
 |-----|--------|
 | `<Tab>` | Find files (Telescope) |
+| `<Shift><Shift>` (or `<Shift-Tab>`) | Find files (Telescope) |
 | `<C-b>` | List buffers (Telescope) |
 | `<F20>` | Live grep (Telescope) |
 | `` ` `` | Tags (Telescope) |
