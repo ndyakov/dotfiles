@@ -49,11 +49,11 @@ set which-key
 set timeout timeoutlen=2000
 
 " FONT_SIZE: UI font size
-let g:WhichKey_FontSize = 18
+let g:WhichKey_FontSize = {{FONT_SIZE}}
 " COLOR_CYAN: Command color - https://www.colorhexa.com/83c092
-let g:WhichKey_CommandColor = "#83c092"
+let g:WhichKey_CommandColor = "{{COLOR_CYAN}}"
 " COLOR_RED: Prefix color - https://www.colorhexa.com/e67e80
-let g:WhichKey_PrefixColor = "#e67e80"
+let g:WhichKey_PrefixColor = "{{COLOR_RED}}"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 let g:WhichKeyDesc_leader = "<leader> Leader key"

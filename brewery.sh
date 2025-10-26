@@ -36,5 +36,4 @@ ensure the_silver_searcher
 ensure gnupg
 ensure pinentry-mac
 ensure tmuxinator
-echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
-killall gpg-agent
+ensure lsd

@@ -2,6 +2,7 @@
 alias g='env LANG=en_US git'
 
 # shorty
+alias ls='lsd'
 alias l='ls -la'
 alias q='exit'
 alias c='clear'

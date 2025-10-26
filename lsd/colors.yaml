@@ -1,0 +1,41 @@
+# Everforest Dark color theme for lsd
+# Based on Everforest Dark Medium palette
+
+user: 223    # d3c6aa - foreground
+group: 223   # d3c6aa - foreground
+permission: # 859289 - gray
+  read: 245
+  write: 245
+  exec: 245
+  exec-sticky: 245
+  no-access: 245
+  octal: 245
+  acl: 245
+  context: 245
+date:
+  hour-old: 149    # a7c080 - everforest green
+  day-old: 150     # a7c080 - everforest green
+  older: 108      # a7c080 - everforest green
+size:
+  none: 245        # 859289 - gray
+  small: 108       # 83c092 - green
+  medium: 214      # dbbc7f - yellow
+  large: 167       # e67e80 - red
+inode:
+  valid: 245       # 859289 - gray
+  invalid: 167     # e67e80 - red
+links:
+  valid: 108       # 83c092 - green
+  invalid: 167     # e67e80 - red
+tree-edge: 245     # 859289 - gray
+git-status:
+  default: 245     # 859289 - gray
+  unmodified: 245  # 859289 - gray
+  ignored: 245     # 859289 - gray
+  new-in-index: 108      # 83c092 - green
+  new-in-workdir: 108    # 83c092 - green
+  typechange: 214        # dbbc7f - yellow
+  deleted: 167           # e67e80 - red
+  renamed: 214           # dbbc7f - yellow
+  modified: 214          # dbbc7f - yellow
+  conflicted: 167        # e67e80 - red

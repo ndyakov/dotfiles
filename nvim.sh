@@ -1,5 +1,7 @@
-if [ ! -d "$HOME/.config/nvim" ]; then
-    ln -s $dotfiles/nvim/ $HOME/.config/nvim
+home_dir=${HOME:-~}
+
+if [ ! -d "$home_dir/.config/nvim" ]; then
+    ln -s $dotfiles/nvim/ $home_dir/.config/nvim
 fi
 gem install neovim
 npm install -g neovim

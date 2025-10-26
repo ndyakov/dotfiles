@@ -1,1 +1,13 @@
 .DS_Store
+.idea
+
+# Template configuration (user-specific)
+template-config.json
+
+# Generated from templates
+fish/ndyakov/conf.d/config.fish
+tmux/tmux.conf
+idea/vimrc
+nvim/lua/plugins/theme.lua
+nvim/lua/plugins/lualine.lua
+nvim/lua/config/autocmds.lua

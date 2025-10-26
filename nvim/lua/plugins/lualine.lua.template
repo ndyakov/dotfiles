@@ -7,12 +7,12 @@ return {
 
     -- Change insert mode color to blue
     -- COLOR_BLUE_BRIGHT: Bright blue for insert mode - https://www.colorhexa.com/0fbbb3
-    everforest.insert.a.bg = "#0fbbb3"
+    everforest.insert.a.bg = "{{COLOR_BLUE_BRIGHT}}"
     -- COLOR_BG_ACTIVE: Dark foreground - https://www.colorhexa.com/232a2e
-    everforest.insert.a.fg = "#232a2e"
+    everforest.insert.a.fg = "{{COLOR_BG_ACTIVE}}"
     -- COLOR_GREEN_DARK: Dark green for normal mode - https://www.colorhexa.com/91a161
-    everforest.normal.a.bg = "#91a161"
-    everforest.normal.a.fg = "#232a2e"
+    everforest.normal.a.bg = "{{COLOR_GREEN_DARK}}"
+    everforest.normal.a.fg = "{{COLOR_BG_ACTIVE}}"
 
     require("lualine").setup({
       options = {

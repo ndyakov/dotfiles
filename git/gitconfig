@@ -1,7 +1,7 @@
 [user]
     name = Nedyalko Dyakov
     email = nedyalko.dyakov@gmail.com
-    signingkey = 5571106A08EA25A3
+	signingkey = 5571106A08EA25A3
 [color]
     ui = true
 [push]
@@ -34,5 +34,4 @@
 [gpg]
 	program = gpg
 [credential "https://github.com"]
-	helper = 
 	helper = !/usr/local/bin/gh auth git-credential

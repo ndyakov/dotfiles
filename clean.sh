@@ -1,20 +1,21 @@
 #!/bin/bash
 dotfiles=`pwd`
+home_dir=${HOME:-~}
 
 #./brewery.sh
 
-rm $HOME/.gitconfig
+rm $home_dir/.gitconfig
 
-if [ -d "$HOME/.vim" ]; then
-    rm -rf $HOME/.vim
+if [ -d "$home_dir/.vim" ]; then
+    rm -rf $home_dir/.vim
 fi
 
-if [ -d "$HOME/.tmux" ]; then
-    rm -rf $HOME/.tmux
+if [ -d "$home_dir/.tmux" ]; then
+    rm -rf $home_dir/.tmux
 fi
 
-if [ ! -d "$HOME/.config/nvim" ]; then
-    rm -rf $HOME/nvim
+if [ ! -d "$home_dir/.config/nvim" ]; then
+    rm -rf $home_dir/nvim
 fi
 
 echo "clean config"

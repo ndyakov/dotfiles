@@ -17,9 +17,9 @@ run '/opt/homebrew/opt/tpm/share/tpm/tpm'
 
 # Pane styling - make inactive panes darker (must be after plugin load)
 # COLOR_BG_INACTIVE: Inactive pane/window background - https://www.colorhexa.com/1e2326
-set -g window-style 'bg=#1e2326'
+set -g window-style 'bg={{COLOR_BG_INACTIVE}}'
 # COLOR_BG_ACTIVE: Active pane background - https://www.colorhexa.com/232a2e
-set -g window-active-style 'bg=#232a2e'
+set -g window-active-style 'bg={{COLOR_BG_ACTIVE}}'
 
 # History
 set -g history-limit 1000000

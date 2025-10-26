@@ -13,7 +13,7 @@ return {
 			-- Make background slightly darker (in between default and very dark)
 			-- COLOR_BG_NORMAL: Normal background - https://www.colorhexa.com/20262a
 			-- COLOR_FG: Foreground text - https://www.colorhexa.com/d3c6aa
-			vim.api.nvim_set_hl(0, "Normal", { bg = "#20262a", fg = "#d3c6aa" })
+			vim.api.nvim_set_hl(0, "Normal", { bg = "{{COLOR_BG_NORMAL}}", fg = "{{COLOR_FG}}" })
 		end,
 	}
 }

@@ -24,6 +24,21 @@ go run main.go
 
 ## Usage
 
+### List Templates Only
+
+To see all template files and their variables without processing:
+
+```bash
+./template-processor -list
+```
+
+Or with go run:
+```bash
+go run main.go -list
+```
+
+### Process Templates
+
 1. **Run the processor** from the `template-processor` directory:
    ```bash
    ./template-processor
@@ -34,6 +49,10 @@ go run main.go
 3. **Review configuration** before processing
 
 4. **Confirm** to generate files from templates
+
+### Command Line Options
+
+- `-list` - List all template files and their variables without processing
 
 ## Template Syntax
 
@@ -69,12 +88,53 @@ The configuration is stored in `template-config.json` at the dotfiles root:
 }
 ```
 
+## Color Palette
+
+The dotfiles use the **Everforest Dark Medium** color scheme. All colors are configurable via template variables.
+
+### Foreground Colors
+
+| Variable | Color | Preview | Usage |
+|----------|-------|---------|-------|
+| `COLOR_FG` | `#d3c6aa` | [🎨 View](https://www.colorhexa.com/d3c6aa) | Main foreground text |
+| `COLOR_WHITE` | `#f2efdf` | [🎨 View](https://www.colorhexa.com/f2efdf) | Bright white text |
+
+### Background Colors
+
+| Variable | Color | Preview | Usage |
+|----------|-------|---------|-------|
+| `COLOR_BG_INACTIVE` | `#1e2326` | [🎨 View](https://www.colorhexa.com/1e2326) | Inactive pane/window background |
+| `COLOR_BG_NORMAL` | `#20262a` | [🎨 View](https://www.colorhexa.com/20262a) | Normal background |
+| `COLOR_BG_ACTIVE` | `#232a2e` | [🎨 View](https://www.colorhexa.com/232a2e) | Active pane background (lightest) |
+
+### Accent Colors
+
+| Variable | Color | Preview | Usage |
+|----------|-------|---------|-------|
+| `COLOR_YELLOW` | `#dbbc7f` | [🎨 View](https://www.colorhexa.com/dbbc7f) | Yellow accent |
+| `COLOR_CYAN` | `#83c092` | [🎨 View](https://www.colorhexa.com/83c092) | Cyan accent |
+| `COLOR_BLUE` | `#7fbbb3` | [🎨 View](https://www.colorhexa.com/7fbbb3) | Blue accent |
+| `COLOR_BLUE_BRIGHT` | `#0fbbb3` | [🎨 View](https://www.colorhexa.com/0fbbb3) | Bright blue (insert mode) |
+| `COLOR_GREEN` | `#a7c080` | [🎨 View](https://www.colorhexa.com/a7c080) | Green accent |
+| `COLOR_GREEN_DARK` | `#91a161` | [🎨 View](https://www.colorhexa.com/91a161) | Dark green (normal mode) |
+| `COLOR_RED` | `#e67e80` | [🎨 View](https://www.colorhexa.com/e67e80) | Red accent (errors, visual mode) |
+
+### Other Variables
+
+| Variable | Default | Usage |
+|----------|---------|-------|
+| `HOME_DIR` | Auto-detected | User's home directory |
+| `FONT` | `JetBrains Mono` | Default font name |
+| `FONT_SIZE` | `18` | Font size for UI elements |
+| `SIGN_KEY` | (empty) | GPG signing key |
+
 ## Supported Variables
 
 The program provides smart defaults for:
 
 - `HOME_DIR` - User's home directory (auto-detected)
 - `FONT` - Default font name (defaults to "JetBrains Mono")
+- `FONT_SIZE` - Font size (defaults to "18")
 - `SIGN_KEY` - GPG signing key (no default)
 - `COLOR_*` - Any color variable (defaults to "#000000")
 

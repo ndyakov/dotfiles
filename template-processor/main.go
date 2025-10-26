@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -22,6 +23,10 @@ const (
 )
 
 func main() {
+	// Parse command line flags
+	listOnly := flag.Bool("list", false, "List all template files and their variables without processing")
+	flag.Parse()
+
 	fmt.Println("🔧 Dotfiles Template Processor")
 	fmt.Println("================================\n")
 
@@ -53,6 +58,12 @@ func main() {
 	}
 
 	fmt.Printf("Found %d template file(s)\n\n", len(templateFiles))
+
+	// If list-only mode, just print templates and exit
+	if *listOnly {
+		printTemplateList(dotfilesRoot, templateFiles)
+		return
+	}
 
 	// Extract all variables from templates
 	allVars := make(map[string]bool)
@@ -255,14 +266,65 @@ func getDefaultValue(varName string) string {
 		return ""
 	case "FONT":
 		return "JetBrains Mono"
+	case "FONT_SIZE":
+		return "18"
 	case "SIGN_KEY":
 		return ""
+	case "COLOR_FG":
+		return "#d3c6aa"
+	case "COLOR_WHITE":
+		return "#f2efdf"
+	case "COLOR_BG_INACTIVE":
+		return "#1e2326"
+	case "COLOR_BG_NORMAL":
+		return "#20262a"
+	case "COLOR_BG_ACTIVE":
+		return "#232a2e"
+	case "COLOR_YELLOW":
+		return "#dbbc7f"
+	case "COLOR_CYAN":
+		return "#83c092"
+	case "COLOR_BLUE":
+		return "#7fbbb3"
+	case "COLOR_BLUE_BRIGHT":
+		return "#0fbbb3"
+	case "COLOR_GREEN":
+		return "#a7c080"
+	case "COLOR_GREEN_DARK":
+		return "#91a161"
+	case "COLOR_RED":
+		return "#e67e80"
 	default:
 		// Check if it's a color variable
 		if strings.HasPrefix(varName, "COLOR_") {
 			return "#000000"
 		}
 		return ""
+	}
+}
+
+// printTemplateList prints all template files and their variables
+func printTemplateList(dotfilesRoot string, templateFiles []string) {
+	fmt.Println("📄 Template Files:")
+	fmt.Println("==================\n")
+
+	for _, tmplFile := range templateFiles {
+		relPath, _ := filepath.Rel(dotfilesRoot, tmplFile)
+		outputPath := strings.TrimSuffix(relPath, templateSuffix)
+
+		fmt.Printf("📝 %s\n", relPath)
+		fmt.Printf("   → generates: %s\n", outputPath)
+
+		// Extract and display variables
+		vars, err := extractVariables(tmplFile)
+		if err != nil {
+			fmt.Printf("   ⚠️  Error extracting variables: %v\n", err)
+		} else if len(vars) > 0 {
+			fmt.Printf("   Variables: %s\n", strings.Join(vars, ", "))
+		} else {
+			fmt.Printf("   Variables: (none)\n")
+		}
+		fmt.Println()
 	}
 }
 

@@ -12,7 +12,7 @@ autocmd("ColorScheme", {
 		-- Make inactive windows darker
 		-- COLOR_BG_INACTIVE: Inactive pane/window background - https://www.colorhexa.com/1e2326
 		-- COLOR_FG: Foreground text - https://www.colorhexa.com/d3c6aa
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2326", fg = "#d3c6aa" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "{{COLOR_BG_INACTIVE}}", fg = "{{COLOR_FG}}" })
 	end,
 })
 
@@ -214,4 +214,4 @@ end, { noremap = true })
 -- Apply custom highlights immediately (in case colorscheme is already loaded)
 -- COLOR_BG_INACTIVE: Inactive pane/window background - https://www.colorhexa.com/1e2326
 -- COLOR_FG: Foreground text - https://www.colorhexa.com/d3c6aa
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2326", fg = "#d3c6aa" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "{{COLOR_BG_INACTIVE}}", fg = "{{COLOR_FG}}" })
