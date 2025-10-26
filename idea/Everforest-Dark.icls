@@ -8,6 +8,7 @@
   </metaInfo>
   <colors>
     <option name="CARET_ROW_COLOR" value="2b3339" />
+    <option name="EDITOR_BACKGROUND" value="20262a" />
     <option name="GUTTER_BACKGROUND" value="20262a" />
     <option name="LINE_NUMBERS_COLOR" value="7a8478" />
     <option name="SELECTED_TEARLINE_COLOR" value="3d484d" />
