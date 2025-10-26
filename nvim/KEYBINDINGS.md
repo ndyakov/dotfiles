@@ -81,7 +81,7 @@ Leader key: `,` (comma)
 |-----|--------|
 | `[q` | Previous quickfix item |
 | `]q` | Next quickfix item |
-| `,q` | Toggle quickfix list |
+| `,q` | Open quickfix list in Telescope |
 | `[a` | Previous location list item |
 | `]a` | Next location list item |
 | `,a` | Toggle location list |

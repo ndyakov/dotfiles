@@ -11,6 +11,8 @@ map("i", "<F1>", "<ESC>", opts)
 map("n", "<F1>", "<ESC>", opts)
 map("v", "<F1>", "<ESC>", opts)
 
+map("i", "jj", "<Esc>")
+
 -- Disable arrow keys
 map("i", "<Left>", "<Nop>", opts)
 map("i", "<Right>", "<Nop>", opts)
@@ -137,10 +139,6 @@ map("n", "[g", ":Gitsigns prev_hunk<CR>", opts)
 map("n", "]g", ":Gitsigns next_hunk<CR>", opts)
 
 -- Go test (if using vim-go or similar)
-map("v", "<leader>tf", ":GoTestFunc<CR>", opts)
-map("v", "<leader>t", ":GoTest<CR>", opts)
-map("n", "<leader>tf", ":GoTestFunc<CR>", opts)
-map("n", "<leader>t", ":GoTest<CR>", opts)
 map("n", "<leader>gd", ":GoDef<CR>", opts)
 
 -- Smart go to definition or referrers (using vim-go)
@@ -150,13 +148,11 @@ map("n", "<leader>gf", function()
 	local current_buf = vim.fn.bufnr("%")
 	local current_pos = vim.fn.getcurpos()
 
-	-- Try to jump to definition
-	local ok, err = pcall(vim.cmd, "GoDef")
+	-- Clear quickfix first
+	vim.fn.setqflist({})
 
-	if not ok then
-		vim.notify("GoDef failed: " .. tostring(err), vim.log.levels.ERROR)
-		return
-	end
+	-- Try to jump to definition
+	vim.cmd("GoDef")
 
 	-- Small delay to let GoDef complete
 	vim.defer_fn(function()
@@ -167,33 +163,25 @@ map("n", "<leader>gf", function()
 		if current_buf == new_buf and current_pos[2] == new_pos[2] and current_pos[3] == new_pos[3] then
 			-- We didn't move, so we're at the definition already
 			-- Show referrers (only in your codebase, not system-wide)
-			vim.notify("At definition, showing referrers...", vim.log.levels.INFO)
+			vim.cmd("GoReferrers")
 
-			-- Clear quickfix first
-			vim.fn.setqflist({})
-
-			-- Run GoReferrers
-			local ref_ok, ref_err = pcall(vim.cmd, "GoReferrers")
-
-			if not ref_ok then
-				vim.notify("GoReferrers failed: " .. tostring(ref_err), vim.log.levels.ERROR)
-				return
-			end
-
-			-- Wait longer for GoReferrers to populate quickfix, then open in Telescope
+			-- Wait for GoReferrers to populate quickfix, then open in Telescope
 			vim.defer_fn(function()
-				local qf_list = vim.fn.getqflist()
-				vim.notify("Quickfix has " .. #qf_list .. " items", vim.log.levels.INFO)
-
-				if #qf_list > 0 then
+				if #vim.fn.getqflist() > 0 then
 					require("telescope.builtin").quickfix()
-				else
-					vim.notify("No referrers found", vim.log.levels.WARN)
 				end
 			end, 500)
-		else
-			vim.notify("Jumped to definition", vim.log.levels.INFO)
 		end
+		-- Otherwise, we jumped to the definition successfully
 	end, 150)
 end, { noremap = true, silent = true, desc = "Go to definition or show referrers in Telescope" })
+
+-- Open any quickfix list in Telescope
+map("n", "<leader>q", function()
+	if #vim.fn.getqflist() > 0 then
+		require("telescope.builtin").quickfix()
+	else
+		vim.notify("Quickfix list is empty", vim.log.levels.WARN)
+	end
+end, { noremap = true, silent = true, desc = "Open quickfix in Telescope" })
 
