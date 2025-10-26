@@ -152,27 +152,35 @@ Leader key: `,` (comma)
 | `<leader>t` | Run tests |
 | `<leader>tf` | Run test function |
 
-## AI Assistant (Augment)
+## AI Assistant (GitHub Copilot)
 
 | Key | Action |
 |-----|--------|
-| `<Tab>` | Accept Augment suggestion (insert mode) |
-| `<leader>ac` | Augment chat (normal & visual mode) |
-| `<leader>an` | Augment new chat conversation |
-| `<leader>at` | Augment toggle chat panel |
-| `<leader>as` | Augment status |
+| `<Tab>` | Accept Copilot suggestion (insert mode) |
+| `<leader>ce` | Copilot enable |
+| `<leader>cd` | Copilot disable |
+| `<leader>cs` | Copilot status |
+| `<leader>cp` | Copilot panel (view suggestions) |
 
-### Augment Commands
+### Copilot Commands
 
 | Command | Action |
 |---------|--------|
-| `:Augment status` | View plugin status and workspace sync progress |
-| `:Augment signin` | Sign in to Augment |
-| `:Augment signout` | Sign out of Augment |
-| `:Augment log` | View plugin log |
-| `:Augment chat` | Send chat message to Augment AI |
-| `:Augment chat-new` | Start new chat conversation |
-| `:Augment chat-toggle` | Toggle chat panel visibility |
+| `:Copilot setup` | Initial setup and authentication |
+| `:Copilot status` | View Copilot status |
+| `:Copilot enable` | Enable Copilot |
+| `:Copilot disable` | Disable Copilot |
+| `:Copilot panel` | Open suggestions panel |
+| `:Copilot signout` | Sign out of Copilot |
+
+### Copilot Insert Mode Keys
+
+| Key | Action |
+|-----|--------|
+| `<Tab>` | Accept suggestion |
+| `<M-]>` (Alt-]) | Next suggestion |
+| `<M-[>` (Alt-[) | Previous suggestion |
+| `<M-\>` (Alt-\) | Dismiss suggestion |
 
 ## Misc
 
