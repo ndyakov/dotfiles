@@ -1,0 +1,53 @@
+# Everforest Dark Theme for tmux
+# Based on Everforest hard background variant with custom darker background
+# Colors from palette.json - dark.foreground and dark.background.hard
+# Statusbar matches lualine normal mode: green background
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+
+
+# Terminal type configuration for true color support
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+set -ga terminal-overrides ",xterm-256color:Tc"
+set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+
+
+# Status bar colors - matching lualine normal mode
+set -g status-style "bg={{COLOR_BG}},fg={{COLOR_STATUSLINE1}}"
+set -g status-left-length 40
+set -g status-right-length 80
+
+# Left status - session name with green background (like lualine section a)
+set -g status-left "#[bg={{COLOR_STATUSLINE1}},fg={{COLOR_BG}},bold] #S #[bg={{COLOR_BG}},fg={{COLOR_STATUSLINE1}}] "
+
+# Right status -
+set -g status-right "#[bg={{COLOR_BG1}},fg={{COLOR_GREY1}}] #{prefix_highlight} | #[bg={{COLOR_BG2}},fg={{COLOR_FG}}] %d #[bg={{COLOR_STATUSLINE1}},fg={{COLOR_BG}},bold] %H:%M "
+
+
+# Window status - inactive windows
+set -g window-status-format "#[bg={{COLOR_BG1}},fg={{COLOR_GREY1}}] #I:#W#F "
+
+# Window status - active window (green like lualine)
+set -g window-status-current-format "#[bg={{COLOR_STATUSLINE1}},fg={{COLOR_BG}},bold] #I:#W#F "
+
+# Window status separator
+set -g window-status-separator ""
+
+# Pane borders
+set -g pane-border-style "fg={{COLOR_BG4}}"
+set -g pane-active-border-style "fg={{COLOR_GREEN}}"
+
+# Message text
+set -g message-style "bg={{COLOR_GREEN}},fg={{COLOR_BG}},bold"
+set -g message-command-style "bg={{COLOR_BG2}},fg={{COLOR_FG}}"
+
+# Pane number display
+set -g display-panes-active-colour "{{COLOR_GREEN}}"
+set -g display-panes-colour "{{COLOR_GREY0}}"
+
+# Clock mode
+set -g clock-mode-colour "{{COLOR_BLUE}}"
+
+# Copy mode highlighting
+set -g mode-style "bg={{COLOR_BG_VISUAL}},fg={{COLOR_FG}}"
+

@@ -1,0 +1,16 @@
+{
+  "variables": {
+    "HOME_DIR": "/Users/username",
+    "FONT": "JetBrains Mono",
+    "COLOR_PRIMARY": "#a7c080",
+    "COLOR_SECONDARY": "#dbbc7f",
+    "COLOR_YELLOW": "#dbbc7f",
+    "COLOR_CYAN": "#83c092",
+    "COLOR_BLUE": "#7fbbb3",
+    "COLOR_WHITE": "#f2efdf",
+    "COLOR_GREEN": "#a7c080",
+    "COLOR_RED": "#e67e80",
+    "SIGN_KEY": ""
+  }
+}
+
