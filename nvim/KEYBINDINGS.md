@@ -6,8 +6,9 @@ Leader key: `,` (comma)
 
 | Key | Action |
 |-----|--------|
+| **`Shift+Space` twice** | **Find files (like IntelliJ/GoLand Shift+Shift)** ⭐ |
 | `<Tab>` | Find files (Telescope) |
-| `;;` | Find files (Telescope) - double semicolon (like Shift+Shift) |
+| `;;` | Find files (Telescope) - double semicolon |
 | `<C-p>` | Find files (Telescope) - Ctrl+P style |
 | `<C-b>` | List buffers (Telescope) |
 | `<F20>` | Live grep (Telescope) |
