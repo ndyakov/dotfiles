@@ -55,21 +55,36 @@ map("i", "<C-s>", "<ESC>:w<CR>", opts)
 map("v", "<C-s>", "<ESC>:w<CR>", opts)
 
 -- Splits/Windows
+-- Note: Original vimrc used Mac Option+key combos (–, ≠, ˚, ∆, ˙, ¬, œ, etc.)
+-- These are preserved but also adding standard alternatives
+
+-- Create splits (Mac Option+- and Option+=)
 map("n", "–", ":split<CR>", opts)
 map("n", "≠", ":vsplit<CR>", opts)
+-- Standard alternatives
+map("n", "<leader>-", ":split<CR>", opts)
+map("n", "<leader>=", ":vsplit<CR>", opts)
 
--- Navigation between splits (using special characters from vimrc)
+-- Navigation between splits (Mac Option+hjkl)
 map("n", "˚", ":wincmd k<CR>", opts)
 map("n", "∆", ":wincmd j<CR>", opts)
 map("n", "˙", ":wincmd h<CR>", opts)
 map("n", "¬", ":wincmd l<CR>", opts)
 map("n", "œ", ":close<CR>", opts)
+-- Standard alternatives with Ctrl
+map("n", "<C-k>", ":wincmd k<CR>", opts)
+map("n", "<C-j>", ":wincmd j<CR>", opts)
 
--- Resize splits
-map("n", "", ":res +5<CR>", opts)
-map("n", "Ô", ":res -5<CR>", opts)
-map("n", "Ó", ":vertical resize -5<CR>", opts)
-map("n", "Ò", ":vertical resize +5<CR>", opts)
+-- Resize splits (Mac Option+arrow keys - commenting out problematic ones)
+-- map("n", "", ":res +5<CR>", opts)  -- Empty key, skipping
+-- map("n", "Ô", ":res -5<CR>", opts)
+-- map("n", "Ó", ":vertical resize -5<CR>", opts)
+-- map("n", "Ò", ":vertical resize +5<CR>", opts)
+-- Standard alternatives
+map("n", "<leader>+", ":res +5<CR>", opts)
+map("n", "<leader>_", ":res -5<CR>", opts)
+map("n", "<leader><", ":vertical resize -5<CR>", opts)
+map("n", "<leader>>", ":vertical resize +5<CR>", opts)
 
 -- Buffer navigation
 map("n", "<leader><leader>", "<C-^>", opts)
