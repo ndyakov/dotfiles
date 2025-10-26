@@ -198,6 +198,7 @@ Leader key: `,` (comma)
 | Key | Action |
 |-----|--------|
 | `<Tab>` | Accept suggestion |
+| `<Shift-Enter>` | Accept suggestion (alternative) |
 | `<M-]>` (Alt-]) | Next suggestion |
 | `<M-[>` (Alt-[) | Previous suggestion |
 | `<M-\>` (Alt-\) | Dismiss suggestion |

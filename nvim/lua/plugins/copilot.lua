@@ -3,15 +3,15 @@ return {
 	event = "InsertEnter", -- Load when entering insert mode
 	config = function()
 		-- Copilot uses Tab by default to accept suggestions
-		-- This is already configured by the plugin
+		-- Also add Shift+Enter as an alternative
 
-		-- Optional: Disable tab mapping if you want to use a different key
-		-- vim.g.copilot_no_tab_map = true
-		-- Then create your own mapping:
-		-- vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-		--   expr = true,
-		--   replace_keycodes = false
-		-- })
+		-- Map Shift+Enter to accept Copilot suggestion
+		vim.keymap.set("i", "<S-CR>", 'copilot#Accept("\\<CR>")', {
+			expr = true,
+			replace_keycodes = false,
+			silent = true,
+			desc = "Accept Copilot suggestion",
+		})
 
 		-- Optional: Configure filetypes to enable/disable
 		-- vim.g.copilot_filetypes = {
