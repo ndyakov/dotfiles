@@ -32,8 +32,7 @@ map("v", ";", ":", { noremap = true })
 -- Toggle spell
 map("n", "<leader>s", ":set spell!<CR>", opts)
 
--- Tab in visual mode for indenting
-map("v", "<tab>", ">gv", opts)
+-- Tab in visual mode for indenting (Shift-Tab for unindent)
 map("v", "<s-tab>", "<gv", opts)
 
 -- Toggle relative numbers
@@ -42,8 +41,9 @@ map("n", "<leader>l", ":set relativenumber!<CR>", opts)
 -- Select just pasted text
 map("n", "<leader>v", "V`]", opts)
 
--- NvimTree
-map("n", "<BS>", ":NvimTreeToggle<CR>", opts)
+-- NvimTree and FZF
+map("n", "<tab>", ":NvimTreeToggle<CR>", opts) -- Tab opens NvimTree
+map("n", "<BS>", ":FZF<CR>", opts) -- Backspace opens FZF
 map("n", "<leader>nf", ":NvimTreeFindFileToggle<CR>", opts)
 
 -- Redo with U
@@ -119,25 +119,13 @@ map("n", "]f", ";", opts)
 -- Edit vimrc
 map("n", "<leader>ev", "<C-w><C-v><C-l>:e ~/.config/nvim/init.vim<CR>", opts)
 
--- Telescope (replacing fzf)
-map("n", "<tab>", ":Telescope find_files<CR>", opts)
-map("n", "<C-b>", ":Telescope buffers<CR>", opts)
-map("n", "<F20>", ":Telescope live_grep<CR>", opts)
+-- FZF and Ag (Silver Searcher)
+map("n", "<S-f>", ":Ag<CR>", opts) -- Shift+F opens Ag search
+map("n", "<C-b>", ":Buffers<CR>", opts) -- Ctrl+B for buffer list
+map("n", "<F20>", ":Ag<CR>", opts) -- F20 also opens Ag
 
--- Double-tap shortcuts for Telescope
--- Since detecting raw Shift key is not possible in Neovim, using alternatives:
-map("n", ";;", ":Telescope find_files<CR>", opts) -- Double semicolon (like Shift+Shift)
-map("n", "<C-p>", ":Telescope find_files<CR>", opts) -- Ctrl+P (common in many editors)
-
-map("n", "<leader>f", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-end, opts)
-
--- Visual mode search with Telescope
-map("v", "<leader>f", function()
-	local text = vim.fn.getreg("h")
-	require("telescope.builtin").grep_string({ search = text })
-end, opts)
+-- Search word under cursor with Ag
+map("n", "<leader>f", ":Ag <C-r><C-w><CR>", opts)
 
 -- Git (using gitsigns instead of gitgutter)
 map("n", "gp", ":Gitsigns preview_hunk<CR>", opts)

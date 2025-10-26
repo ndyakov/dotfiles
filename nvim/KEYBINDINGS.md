@@ -6,16 +6,13 @@ Leader key: `,` (comma)
 
 | Key | Action |
 |-----|--------|
-| **`Shift+Space` twice** | **Find files (like IntelliJ/GoLand Shift+Shift)** ⭐ |
-| `<Tab>` | Find files (Telescope) |
-| `;;` | Find files (Telescope) - double semicolon |
-| `<C-p>` | Find files (Telescope) - Ctrl+P style |
-| `<C-b>` | List buffers (Telescope) |
-| `<F20>` | Live grep (Telescope) |
-| `` ` `` | Tags (Telescope) |
-| `<leader>f` | Search word under cursor |
-| `<BS>` | Toggle NvimTree |
-| `<leader>nf` | Find file in NvimTree |
+| `<Tab>` | Toggle NvimTree (file explorer) |
+| `<BS>` (Backspace) | Open FZF (fuzzy file finder) |
+| `<Shift-F>` | Open Ag (Silver Searcher - search in files) |
+| `<C-b>` | List buffers (FZF) |
+| `<F20>` | Open Ag (search in files) |
+| `<leader>f` | Search word under cursor with Ag |
+| `<leader>nf` | Find current file in NvimTree |
 
 ## Editing
 
