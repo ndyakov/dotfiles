@@ -1,3 +1,2 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
-source ~/.vimrc
+" Load Lua configuration
+lua require('init')
