@@ -135,12 +135,22 @@ return {
 				border = "rounded",
 			})
 
-			-- Setup LSP servers
-			local lspconfig = require("lspconfig")
+			-- Setup LSP servers using vim.lsp.config (Nvim 0.11+)
+			-- This replaces the deprecated require('lspconfig').server.setup() pattern
+
+			-- Configure on_attach for all servers
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local bufnr = args.buf
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client then
+						on_attach(client, bufnr)
+					end
+				end,
+			})
 
 			-- Lua
-			lspconfig.lua_ls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
@@ -159,8 +169,7 @@ return {
 			})
 
 			-- Go
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 				settings = {
 					gopls = {
@@ -174,46 +183,45 @@ return {
 			})
 
 			-- TypeScript/JavaScript
-			lspconfig.ts_ls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("ts_ls", {
 				capabilities = capabilities,
 			})
 
 			-- HTML
-			lspconfig.html.setup({
-				on_attach = on_attach,
+			vim.lsp.config("html", {
 				capabilities = capabilities,
 			})
 
 			-- CSS
-			lspconfig.cssls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("cssls", {
 				capabilities = capabilities,
 			})
 
 			-- JSON
-			lspconfig.jsonls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("jsonls", {
 				capabilities = capabilities,
 			})
 
 			-- YAML
-			lspconfig.yamlls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("yamlls", {
 				capabilities = capabilities,
 			})
 
 			-- Bash
-			lspconfig.bashls.setup({
-				on_attach = on_attach,
+			vim.lsp.config("bashls", {
 				capabilities = capabilities,
 			})
 
 			-- Python
-			lspconfig.pyright.setup({
-				on_attach = on_attach,
+			vim.lsp.config("pyright", {
 				capabilities = capabilities,
 			})
+
+			-- Enable all configured servers
+			local servers = { "lua_ls", "gopls", "ts_ls", "html", "cssls", "jsonls", "yamlls", "bashls", "pyright" }
+			for _, server in ipairs(servers) do
+				vim.lsp.enable(server)
+			end
 		end,
 	},
 }
