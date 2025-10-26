@@ -22,8 +22,8 @@ autocmd("ColorScheme", {
 	group = colorscheme_group,
 	pattern = "*",
 	callback = function()
-		-- Make inactive windows darker
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1f21", fg = "#d3c6aa" })
+		-- Make inactive windows darker (in between default and very dark)
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2527", fg = "#d3c6aa" })
 	end,
 })
 
@@ -223,4 +223,4 @@ vim.keymap.set("i", "<Leader>n", function()
 end, { noremap = true })
 
 -- Apply custom highlights immediately (in case colorscheme is already loaded)
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1f21", fg = "#d3c6aa" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2527", fg = "#d3c6aa" })

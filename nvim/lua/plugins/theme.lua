@@ -10,8 +10,8 @@ return {
 			})
 			vim.cmd([[colorscheme everforest]])
 
-			-- Make background even darker
-			vim.api.nvim_set_hl(0, "Normal", { bg = "#1e2326", fg = "#d3c6aa" })
+			-- Make background slightly darker (in between default and very dark)
+			vim.api.nvim_set_hl(0, "Normal", { bg = "#20262a", fg = "#d3c6aa" })
 		end,
 	}
 }
