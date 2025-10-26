@@ -188,6 +188,12 @@ map("n", "<leader>q", function()
 	end
 end, { noremap = true, silent = true, desc = "Open quickfix in Telescope" })
 
+-- Split resizing with Ctrl+arrows
+map("n", "<C-Up>", ":resize +2<CR>", opts)
+map("n", "<C-Down>", ":resize -2<CR>", opts)
+map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+
 -- Test command to populate quickfix with sample data
 vim.api.nvim_create_user_command("TestQuickfix", function()
 	vim.fn.setqflist({
