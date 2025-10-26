@@ -86,6 +86,19 @@ return {
 				map("n", "]d", vim.diagnostic.goto_next, opts)
 				map("n", "<leader>e", vim.diagnostic.open_float, opts)
 				map("n", "<leader>dl", vim.diagnostic.setloclist, opts)
+
+				-- Show diagnostics in quickfix
+				map("n", "<leader>dq", function()
+					vim.diagnostic.setqflist()
+					-- Open in Telescope if available
+					vim.defer_fn(function()
+						if #vim.fn.getqflist() > 0 then
+							require("telescope.builtin").quickfix()
+						else
+							vim.notify("No diagnostics found", vim.log.levels.INFO)
+						end
+					end, 100)
+				end, opts)
 			end
 
 			-- Get capabilities from nvim-cmp

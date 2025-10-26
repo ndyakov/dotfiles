@@ -127,6 +127,7 @@ Leader key: `,` (comma)
 | `]d` | Next diagnostic |
 | `<leader>e` | Show diagnostic float |
 | `<leader>dl` | Diagnostic location list |
+| `<leader>dq` | Show all diagnostics in Telescope quickfix |
 
 ## Completion (nvim-cmp)
 
