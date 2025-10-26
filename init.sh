@@ -32,6 +32,11 @@ echo "$dotfiles/fish/ndyakov" >> $HOME/.config/fish/fish_plugins
 
 ./nvim.sh
 
+# Link IdeaVim configuration
+if [ ! -f "$HOME/.ideavimrc" ]; then
+    ln -s $dotfiles/idea/vimrc $HOME/.ideavimrc
+fi
+
 ./secrets.sh
 
 echo "1.now run fisher in fish"
