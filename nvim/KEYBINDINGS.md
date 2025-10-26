@@ -26,31 +26,6 @@ Leader key: `,` (comma)
 | `<leader>W` | Clear trailing whitespace |
 | `<leader>s` | Toggle spell check |
 
-## Commenting (Comment.nvim)
-
-| Key | Action |
-|-----|--------|
-| `gcc` | Toggle comment on current line |
-| `gc{motion}` | Toggle comment on motion (e.g., `gcap` for paragraph) |
-| `gc` | Toggle comment on selection (visual mode) |
-| `gbc` | Toggle block comment on current line |
-| `gb` | Toggle block comment on selection (visual mode) |
-| `gcO` | Add comment on line above |
-| `gco` | Add comment on line below |
-| `gcA` | Add comment at end of line |
-
-## Surround (nvim-surround)
-
-| Key | Action | Example |
-|-----|--------|---------|
-| `ys{motion}{char}` | Add surround | `ysiw"` - surround word with quotes |
-| `yss{char}` | Surround entire line | `yss)` - surround line with () |
-| `cs{old}{new}` | Change surround | `cs"'` - change " to ' |
-| `ds{char}` | Delete surround | `ds"` - delete surrounding quotes |
-| `S{char}` | Surround selection (visual mode) | Select text, then `S"` |
-
-**Common surrounds:** `"` `'` `` ` `` `(` `)` `[` `]` `{` `}` `<` `>` `t` (HTML tag)
-
 ## Visual Mode
 
 | Key | Action |
@@ -104,6 +79,22 @@ Leader key: `,` (comma)
 | `<leader>>` | Increase width |
 | `<leader><` | Decrease width |
 
+### Focus (Auto-Resize Splits)
+| Key | Action |
+|-----|--------|
+| `<leader>ft` | Toggle focus auto-resize on/off |
+| `<leader>fm` | Toggle between maximized and equal splits |
+| `<leader>fs` | Split nicely (golden ratio) |
+
+**Focus Commands:**
+- `:FocusToggle` - Toggle focus on/off
+- `:FocusMaxOrEqual` - Toggle between max and equal
+- `:FocusSplitNicely` - Create split with golden ratio
+- `:FocusEqualise` - Make all splits equal size
+- `:FocusMaximise` - Maximize current split
+
+**Note:** Focus automatically resizes the focused window based on golden ratio
+
 ## Quickfix & Location Lists
 
 | Key | Action |
@@ -115,22 +106,6 @@ Leader key: `,` (comma)
 | `]a` | Next location list item |
 | `,a` | Toggle location list |
 | `,aa` | First location list item |
-
-## Diagnostics & Errors (Trouble.nvim)
-
-| Key | Action |
-|-----|--------|
-| `,xx` | Toggle diagnostics (all files) |
-| `,xX` | Toggle diagnostics (current buffer only) |
-| `,xs` | Toggle symbols outline |
-| `,xl` | Toggle LSP definitions/references |
-| `,xL` | Toggle location list |
-| `,xQ` | Toggle quickfix list |
-
-**Trouble Commands:**
-- `:Trouble diagnostics` - Show all diagnostics
-- `:Trouble symbols` - Show document symbols
-- `:Trouble lsp` - Show LSP references/definitions
 
 ## Jumplist & f-navigation
 
