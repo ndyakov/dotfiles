@@ -178,10 +178,21 @@ end, { noremap = true, silent = true, desc = "Go to definition or show referrers
 
 -- Open any quickfix list in Telescope
 map("n", "<leader>q", function()
-	if #vim.fn.getqflist() > 0 then
+	local qf_list = vim.fn.getqflist()
+	if #qf_list > 0 then
 		require("telescope.builtin").quickfix()
 	else
 		vim.notify("Quickfix list is empty", vim.log.levels.WARN)
 	end
 end, { noremap = true, silent = true, desc = "Open quickfix in Telescope" })
+
+-- Test command to populate quickfix with sample data
+vim.api.nvim_create_user_command("TestQuickfix", function()
+	vim.fn.setqflist({
+		{ filename = vim.fn.expand("%"), lnum = 1, col = 1, text = "Test entry 1" },
+		{ filename = vim.fn.expand("%"), lnum = 5, col = 1, text = "Test entry 2" },
+		{ filename = vim.fn.expand("%"), lnum = 10, col = 1, text = "Test entry 3" },
+	})
+	vim.notify("Quickfix populated with test data. Press ,q to view in Telescope", vim.log.levels.INFO)
+end, {})
 

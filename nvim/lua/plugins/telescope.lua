@@ -46,11 +46,8 @@ return {
       },
     })
 
-    -- Keymaps
-    vim.keymap.set("n", "<tab>", builtin.find_files, { desc = "Telescope find files" })
-    vim.keymap.set("n", "<C-b>", builtin.buffers, { desc = "Telescope buffers" })
-    vim.keymap.set("n", "<F20>", builtin.live_grep, { desc = "Telescope live grep" })
-    vim.keymap.set("n", "`", builtin.tags, { desc = "Telescope tags" })
+    -- Note: Keymaps are defined in lua/config/keymaps.lua
+    -- Using FZF for file finding, Telescope for quickfix/grep
   end,
 }
 
