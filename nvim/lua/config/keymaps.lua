@@ -1,10 +1,8 @@
 -- Keymaps (translated from vimrc)
+-- Note: Leader key is set in init.lua BEFORE lazy.nvim loads
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-
--- Leader key (default is \)
-vim.g.mapleader = ","
 
 -- Disable F1 help
 map("i", "<F1>", "<ESC>", opts)
@@ -110,6 +108,7 @@ map("n", "]q", ":cnext<CR>", opts)
 map("n", "[a", ":lprev<CR>", opts)
 map("n", "]a", ":lnext<CR>", opts)
 map("n", ",aa", ":lfirst<CR>", opts)
+
 
 -- Jumplist navigation
 map("n", "[w", "<C-o>", opts)
