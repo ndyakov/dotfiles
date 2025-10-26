@@ -80,6 +80,23 @@ autocmd("WinEnter", {
 	command = "set cursorline",
 })
 
+-- Dim inactive windows
+local dim_group = augroup("DimInactiveWindows", { clear = true })
+autocmd("WinEnter", {
+	group = dim_group,
+	pattern = "*",
+	callback = function()
+		vim.wo.winhl = ""
+	end,
+})
+autocmd("WinLeave", {
+	group = dim_group,
+	pattern = "*",
+	callback = function()
+		vim.wo.winhl = "Normal:NormalNC"
+	end,
+})
+
 -- Git commit settings
 autocmd("FileType", {
 	pattern = "gitcommit",
