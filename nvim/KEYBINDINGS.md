@@ -114,7 +114,7 @@ Leader key: `,` (comma)
 | Key | Action |
 |-----|--------|
 | `<leader>gd` | Go to definition (GoDef) |
-| `<leader>gf` | Smart: GoDef OR GoReferrers (if at definition, searches only your codebase) |
+| `<leader>gf` | Smart: GoDef OR GoReferrers in Telescope (if at definition, searches only your codebase) |
 | `<leader>t` | Run tests |
 | `<leader>tf` | Run test function |
 

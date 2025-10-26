@@ -144,7 +144,7 @@ map("n", "<leader>t", ":GoTest<CR>", opts)
 map("n", "<leader>gd", ":GoDef<CR>", opts)
 
 -- Smart go to definition or referrers (using vim-go)
--- If at definition, show referrers (callers in your codebase only). Otherwise, go to definition.
+-- If at definition, show referrers in Telescope. Otherwise, go to definition.
 map("n", "<leader>gf", function()
 	-- Save current position
 	local current_buf = vim.fn.bufnr("%")
@@ -163,8 +163,16 @@ map("n", "<leader>gf", function()
 			-- We didn't move, so we're at the definition already
 			-- Show referrers (only in your codebase, not system-wide)
 			vim.cmd("GoReferrers")
+
+			-- Wait for GoReferrers to populate quickfix, then open in Telescope
+			vim.defer_fn(function()
+				-- Check if quickfix has items
+				if #vim.fn.getqflist() > 0 then
+					require("telescope.builtin").quickfix()
+				end
+			end, 200)
 		end
 		-- Otherwise, we jumped to the definition successfully
 	end, 100)
-end, { noremap = true, silent = true, desc = "Go to definition or show referrers" })
+end, { noremap = true, silent = true, desc = "Go to definition or show referrers in Telescope" })
 
