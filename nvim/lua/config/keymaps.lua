@@ -143,8 +143,8 @@ map("n", "<leader>tf", ":GoTestFunc<CR>", opts)
 map("n", "<leader>t", ":GoTest<CR>", opts)
 map("n", "<leader>gd", ":GoDef<CR>", opts)
 
--- Smart go to definition or callers (using vim-go)
--- If at definition, show callers. Otherwise, go to definition.
+-- Smart go to definition or referrers (using vim-go)
+-- If at definition, show referrers (callers in your codebase only). Otherwise, go to definition.
 map("n", "<leader>gf", function()
 	-- Save current position
 	local current_buf = vim.fn.bufnr("%")
@@ -161,10 +161,10 @@ map("n", "<leader>gf", function()
 
 		if current_buf == new_buf and current_pos[2] == new_pos[2] and current_pos[3] == new_pos[3] then
 			-- We didn't move, so we're at the definition already
-			-- Show callers instead
-			vim.cmd("GoCallers")
+			-- Show referrers (only in your codebase, not system-wide)
+			vim.cmd("GoReferrers")
 		end
 		-- Otherwise, we jumped to the definition successfully
 	end, 100)
-end, { noremap = true, silent = true, desc = "Go to definition or show callers" })
+end, { noremap = true, silent = true, desc = "Go to definition or show referrers" })
 
