@@ -152,6 +152,28 @@ Leader key: `,` (comma)
 | `<leader>t` | Run tests |
 | `<leader>tf` | Run test function |
 
+## AI Assistant (Augment)
+
+| Key | Action |
+|-----|--------|
+| `<Tab>` | Accept Augment suggestion (insert mode) |
+| `<leader>ac` | Augment chat (normal & visual mode) |
+| `<leader>an` | Augment new chat conversation |
+| `<leader>at` | Augment toggle chat panel |
+| `<leader>as` | Augment status |
+
+### Augment Commands
+
+| Command | Action |
+|---------|--------|
+| `:Augment status` | View plugin status and workspace sync progress |
+| `:Augment signin` | Sign in to Augment |
+| `:Augment signout` | Sign out of Augment |
+| `:Augment log` | View plugin log |
+| `:Augment chat` | Send chat message to Augment AI |
+| `:Augment chat-new` | Start new chat conversation |
+| `:Augment chat-toggle` | Toggle chat panel visibility |
+
 ## Misc
 
 | Key | Action |
