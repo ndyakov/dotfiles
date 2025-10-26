@@ -113,8 +113,8 @@ Leader key: `,` (comma)
 
 | Key | Action |
 |-----|--------|
-| `<leader>gd` | Go to definition (vim-go) |
-| `<leader>gf` | Smart: Go to definition OR show callers (if at definition) |
+| `<leader>gd` | Go to definition (GoDef) |
+| `<leader>gf` | Smart: GoDef OR GoCallers (if at definition) |
 | `<leader>t` | Run tests |
 | `<leader>tf` | Run test function |
 

@@ -143,7 +143,7 @@ map("n", "<leader>tf", ":GoTestFunc<CR>", opts)
 map("n", "<leader>t", ":GoTest<CR>", opts)
 map("n", "<leader>gd", ":GoDef<CR>", opts)
 
--- Smart go to definition or callers (using CoC)
+-- Smart go to definition or callers (using vim-go)
 -- If at definition, show callers. Otherwise, go to definition.
 map("n", "<leader>gf", function()
 	-- Save current position
@@ -151,22 +151,20 @@ map("n", "<leader>gf", function()
 	local current_pos = vim.fn.getcurpos()
 
 	-- Try to jump to definition
-	vim.fn.CocActionAsync("jumpDefinition", function(err)
-		if err then
-			vim.notify("No definition found", vim.log.levels.WARN)
-			return
-		end
+	vim.cmd("GoDef")
 
+	-- Small delay to let GoDef complete
+	vim.defer_fn(function()
 		-- Check if we moved
 		local new_buf = vim.fn.bufnr("%")
 		local new_pos = vim.fn.getcurpos()
 
 		if current_buf == new_buf and current_pos[2] == new_pos[2] and current_pos[3] == new_pos[3] then
 			-- We didn't move, so we're at the definition already
-			-- Show incoming calls (callers)
-			vim.cmd("CocCommand document.showIncomingCalls")
+			-- Show callers instead
+			vim.cmd("GoCallers")
 		end
 		-- Otherwise, we jumped to the definition successfully
-	end)
+	end, 100)
 end, { noremap = true, silent = true, desc = "Go to definition or show callers" })
 
