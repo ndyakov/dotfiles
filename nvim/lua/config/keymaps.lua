@@ -121,9 +121,14 @@ map("n", "<leader>ev", "<C-w><C-v><C-l>:e ~/.config/nvim/init.vim<CR>", opts)
 
 -- Telescope (replacing fzf)
 map("n", "<tab>", ":Telescope find_files<CR>", opts)
-map("n", "<S-Tab>", ":Telescope find_files<CR>", opts) -- Shift+Tab also opens file finder
 map("n", "<C-b>", ":Telescope buffers<CR>", opts)
 map("n", "<F20>", ":Telescope live_grep<CR>", opts)
+
+-- Double-tap shortcuts for Telescope
+-- Since detecting raw Shift key is not possible in Neovim, using alternatives:
+map("n", ";;", ":Telescope find_files<CR>", opts) -- Double semicolon (like Shift+Shift)
+map("n", "<C-p>", ":Telescope find_files<CR>", opts) -- Ctrl+P (common in many editors)
+
 map("n", "<leader>f", function()
 	require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
 end, opts)
