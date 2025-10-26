@@ -31,7 +31,7 @@ set visualbell
 set history=10000                            " keep x lines of command line history
 set scrolloff=10 sidescrolloff=15            " keep some lines before and after the cursor visible
 set clipboard=unnamedplus,unnamed,ideaput    " integrate with system clipboard
-set ideastatusicon=gray                      " cuz don't need to be too shiny
+set ideastatusicon=enabled                   " blue icon in insert mode
 
 "" Plugin Settings
 "" ========================================================

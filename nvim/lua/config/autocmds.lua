@@ -8,7 +8,7 @@ local statusline_group = augroup("StatusLineGroup", { clear = true })
 autocmd("InsertEnter", {
 	group = statusline_group,
 	pattern = "*",
-	command = "hi StatusLine guibg=#83c092 guifg=#323b3f gui=bold",
+	command = "hi StatusLine guibg=#7fbbb3 guifg=#232a2e gui=bold",
 })
 autocmd("InsertLeave", {
 	group = statusline_group,
