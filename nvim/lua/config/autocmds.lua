@@ -3,19 +3,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- StatusLine color changes on insert mode
-local statusline_group = augroup("StatusLineGroup", { clear = true })
-autocmd("InsertEnter", {
-	group = statusline_group,
-	pattern = "*",
-	command = "hi StatusLine guibg=#7fbbb3 guifg=#232a2e gui=bold",
-})
-autocmd("InsertLeave", {
-	group = statusline_group,
-	pattern = "*",
-	command = "hi StatusLine gui=reverse",
-})
-
 -- Custom colorscheme overrides (applied after colorscheme loads)
 local colorscheme_group = augroup("CustomColorscheme", { clear = true })
 autocmd("ColorScheme", {
