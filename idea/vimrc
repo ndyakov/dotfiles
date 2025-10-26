@@ -83,7 +83,7 @@ let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
 
 let g:WhichKeyDesc_file_quickLook = "`` Recent files"
 
-let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
+let ,:WhichKeyDesc_close_tab = "<leader>q Close active tab"
 
 let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
 let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"

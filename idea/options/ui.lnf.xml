@@ -1,0 +1,9 @@
+<application>
+  <component name="UISettings">
+    <option name="COLOR_BLINDNESS" value="deuteranopia" />
+    <option name="BORDERLESS_MODE" value="true" />
+    <option name="RECENT_FILES_LIMIT" value="100" />
+    <option name="UI_DENSITY" value="COMPACT" />
+    <option name="CONTRAST_SCROLLBARS" value="true" />
+  </component>
+</application>
