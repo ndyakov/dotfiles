@@ -128,7 +128,14 @@ map("n", "<C-b>", ":Buffers<CR>", opts) -- Ctrl+B for buffer list
 map("n", "<F20>", ":Ag<CR>", opts) -- F20 also opens Ag
 
 -- Search word under cursor with Ag
-map("n", "<leader>f", ":Ag <C-r><C-w><CR>", opts)
+map("n", "<leader>f", function()
+	local word = vim.fn.expand("<cword>")
+	if word == "" then
+		vim.notify("No word under cursor", vim.log.levels.WARN)
+		return
+	end
+	vim.cmd("Ag " .. word)
+end, { noremap = true, silent = true, desc = "Search word under cursor with Ag" })
 
 -- Git (using gitsigns instead of gitgutter)
 map("n", "gp", ":Gitsigns preview_hunk<CR>", opts)
@@ -138,12 +145,9 @@ map("n", "gr", ":Gitsigns reset_hunk<CR>", opts)
 map("n", "[g", ":Gitsigns prev_hunk<CR>", opts)
 map("n", "]g", ":Gitsigns next_hunk<CR>", opts)
 
--- Go test (if using vim-go or similar)
-map("n", "<leader>gd", ":GoDef<CR>", opts)
-
 -- Smart go to definition or referrers (using vim-go)
 -- If at definition, show referrers in Telescope. Otherwise, go to definition.
-map("n", "<leader>gf", function()
+map("n", "<leader>gd", function()
 	-- Save current position
 	local current_buf = vim.fn.bufnr("%")
 	local current_pos = vim.fn.getcurpos()
@@ -167,10 +171,8 @@ map("n", "<leader>gf", function()
 
 			-- Wait for GoReferrers to populate quickfix, then open in Telescope
 			vim.defer_fn(function()
-				if #vim.fn.getqflist() > 0 then
-					require("telescope.builtin").quickfix()
-				end
-			end, 500)
+                require("telescope.builtin").loclist()
+			end, 100)
 		end
 		-- Otherwise, we jumped to the definition successfully
 	end, 150)
